@@ -1,11 +1,2 @@
-# Libs
-node_modules
-
-# Built files
-dist
-
-# Coverage Report
-coverage
-
-# Service worker file
-service-worker.js
+**/*.js
+**/*.json
