@@ -1,5 +1,7 @@
+import helmet from '@fastify/helmet';
 import fastify, { FastifyInstance } from 'fastify';
 import { container, inject, singleton } from 'tsyringe';
+import { serializerCompiler, validatorCompiler } from 'fastify-type-provider-zod';
 import { Config } from '@/config/Config';
 import { Logger } from '@/shared/Logger';
 import { BaseRouter } from '@/shared/base/BaseRouter';
@@ -16,7 +18,14 @@ export class Application {
     @inject(Config)
     private config: Config,
   ) {
+    this.setup();
+  }
+
+  private setup() {
     this.fastify = fastify();
+    this.fastify.setSerializerCompiler(serializerCompiler);
+    this.fastify.setValidatorCompiler(validatorCompiler);
+    this.fastify.register(helmet, { global: true });
   }
 
   private setupRoutes() {
