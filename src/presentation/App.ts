@@ -4,6 +4,7 @@ import { container, inject, singleton } from 'tsyringe';
 import { serializerCompiler, validatorCompiler } from 'fastify-type-provider-zod';
 import { Config } from '@/config/Config';
 import { Logger } from '@/shared/Logger';
+import { Swagger } from '@/config/Swagger';
 import { BaseRouter } from '@/shared/base/BaseRouter';
 import * as routers from '@/presentation/routes';
 
@@ -17,11 +18,15 @@ export class Application {
 
     @inject(Config)
     private config: Config,
+
+    @inject(Swagger)
+    private swagger: Swagger,
   ) {
     this.fastify = fastify()
       .setSerializerCompiler(serializerCompiler)
       .setValidatorCompiler(validatorCompiler)
       .register(helmet, { global: true });
+    this.swagger.setup(this.fastify);
   }
 
   private setupRoutes() {
