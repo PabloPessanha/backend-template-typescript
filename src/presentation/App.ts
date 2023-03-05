@@ -39,9 +39,12 @@ export class Application {
   }
 
   private async setupServer() {
-    this.fastify.listen({
+    const { colors } = this.logger;
+    await this.fastify.listen({
       port: this.config.port,
-    }, () => this.logger.info(`Server is running on: http://localhost:${this.config.port}`));
+    });
+    this.logger.info(`Server is running on: ${colors.yellow}http://localhost:${this.config.port}`);
+    this.logger.info(`Docs is running on: ${colors.yellow}http://localhost:${this.config.port}/v1/docs`);
 
     await this.fastify.ready();
   }
