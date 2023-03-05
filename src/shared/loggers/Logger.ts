@@ -3,9 +3,11 @@ import logger from 'npmlog';
 
 @singleton()
 export class Logger {
-  private log = logger;
+  protected log = logger;
+  protected prefix: string;
 
   constructor() {
+    this.prefix = '[API]';
     this.log.heading = ' '.repeat(2);
     this.log.headingStyle = { fg: '' };
     this.log.prefixStyle = { bold: true, fg: 'magenta' };
@@ -13,17 +15,17 @@ export class Logger {
 
   public info(...args: unknown[]) {
     const msg = args.join(' ') as string;
-    return this.log.info('[api]', msg);
+    return this.log.info(this.prefix, msg);
   }
 
   public warn(...args: unknown[]) {
     const msg = args.join(' ') as string;
-    return this.log.warn('[api]', msg);
+    return this.log.warn(this.prefix, msg);
   }
 
   public error(...args: unknown[]) {
     const msg = args.join(' ') as string;
-    return this.log.error('[api]', msg);
+    return this.log.error(this.prefix, msg);
   }
 
   get colors() {

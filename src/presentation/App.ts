@@ -3,8 +3,8 @@ import fastify, { FastifyInstance } from 'fastify';
 import { container, inject, singleton } from 'tsyringe';
 import { serializerCompiler, validatorCompiler } from 'fastify-type-provider-zod';
 import { Config } from '@/config/Config';
-import { Logger } from '@/shared/Logger';
 import { Swagger } from '@/config/Swagger';
+import { Logger } from '@/shared/loggers/Logger';
 import { BaseRouter } from '@/shared/base/BaseRouter';
 import * as routers from '@/presentation/routes';
 

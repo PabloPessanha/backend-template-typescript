@@ -1,6 +1,6 @@
 import { inject, singleton } from 'tsyringe';
 import { FastifyError, FastifyReply, FastifyRequest } from 'fastify';
-import { Logger } from '@/shared/Logger';
+import { Logger } from '@/shared/loggers/Logger';
 
 @singleton()
 export class CreateUserController {
