@@ -1,8 +1,8 @@
 import { FastifyInstance } from 'fastify';
 import { singleton, inject } from 'tsyringe';
 import { BaseRouter } from '@/shared/base/BaseRouter';
-import { CreateUserSchema } from '@/shared/schemas/user/create.schema';
-import { CreateUserController } from '@/presentation/controllers/user/create.controller';
+import { CreateUserSchema } from '@/shared/schemas/user/create-user.schema';
+import { CreateUserController } from '@/presentation/controllers/user/create-user.controller';
 
 @singleton()
 export class UserRoute extends BaseRouter {
