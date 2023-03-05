@@ -18,14 +18,10 @@ export class Application {
     @inject(Config)
     private config: Config,
   ) {
-    this.setup();
-  }
-
-  private setup() {
-    this.fastify = fastify();
-    this.fastify.setSerializerCompiler(serializerCompiler);
-    this.fastify.setValidatorCompiler(validatorCompiler);
-    this.fastify.register(helmet, { global: true });
+    this.fastify = fastify()
+      .setSerializerCompiler(serializerCompiler)
+      .setValidatorCompiler(validatorCompiler)
+      .register(helmet, { global: true });
   }
 
   private setupRoutes() {
@@ -33,7 +29,7 @@ export class Application {
 
     for (const route of routes) {
       const instance = container.resolve<BaseRouter>(route);
-      this.fastify.register(instance.setup, { prefix: '/v1/' });
+      this.fastify.register(() => instance.setup(this.fastify), { path: '/v1/' });
     }
   }
 

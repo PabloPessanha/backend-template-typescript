@@ -7,7 +7,8 @@
   "scripts": {
     "test": "jest",
     "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json -s ./src -o ./dist",
-    "dev": "DEBUG=ecommerce* nodemon src/index.ts",
+    "dev": "nodemon src/index.ts",
+    "dev:tsnd": "tsnd --respawn -r tsconfig-paths/register --transpile-only src/index.ts",
     "prod": "node dist/index.js",
     "typeorm": "ts-node -r tsconfig-paths/register node_modules/.bin/typeorm"
   },
