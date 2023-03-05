@@ -3,13 +3,13 @@ import { FastifyError, FastifyReply, FastifyRequest } from 'fastify';
 import { Logger } from '@/shared/Logger';
 
 @singleton()
-export class CreateUserHandler {
+export class CreateUserController {
   constructor(
     @inject(Logger)
     private logger: Logger,
   ) {}
 
-  public async createUser(request: FastifyRequest, reply: FastifyReply) {
+  public async index(request: FastifyRequest, reply: FastifyReply) {
     try {
       this.logger.info(JSON.stringify(request.body));
       return reply.status(200).send(request.body);
