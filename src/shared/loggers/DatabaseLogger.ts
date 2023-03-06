@@ -5,7 +5,6 @@ import { Logger } from './Logger';
 export class DatabaseLogger extends Logger {
   constructor() {
     super();
-    this.prefix = '[DATABASE]';
-    this.log.prefixStyle = { bold: true, fg: 'yellow' };
+    this.prefix = `${this.colors.yellow}[DATABASE]`;
   }
 }
