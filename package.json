@@ -11,7 +11,7 @@
     "prod": "node dist/index.js"
   },
   "prisma": {
-    "schema": "src/config/schema.prisma"
+    "schema": "src/infrastructure/database/schema.prisma"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
