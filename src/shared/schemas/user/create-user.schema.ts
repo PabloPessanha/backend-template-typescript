@@ -1,3 +1,4 @@
+import { FastifySchema } from 'fastify';
 import z from 'zod';
 
 const UserAddress = z.object({
@@ -12,8 +13,10 @@ const CreateUser = z.object({
   address: UserAddress,
 });
 
-export const CreateUserSchema = {
+export const CreateUserSchema: FastifySchema = {
   body: CreateUser,
+  tags: ['User'],
+  description: 'isso daqui eh uma super descricao cara',
 };
 
 export type CreateUserBody = z.infer<typeof CreateUser>;
