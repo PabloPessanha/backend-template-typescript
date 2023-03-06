@@ -6,7 +6,7 @@ import { Config } from '@/config/Config';
 import { Logger } from '@/shared/loggers/Logger';
 import { BaseRouter } from '@/shared/base/BaseRouter';
 import * as Routes from '@/presentation/routes';
-import * as Plugins from '@/presentation/plugins';
+import * as Plugins from '@/presentation/_plugins';
 
 @singleton()
 export class Application {
