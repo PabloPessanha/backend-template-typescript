@@ -8,9 +8,10 @@
     "test": "jest",
     "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json -s ./src -o ./dist",
     "dev": "nodemon src/index.ts",
-    "dev:tsnd": "tsnd --respawn -r tsconfig-paths/register --transpile-only src/index.ts",
-    "prod": "node dist/index.js",
-    "typeorm": "ts-node -r tsconfig-paths/register node_modules/.bin/typeorm"
+    "prod": "node dist/index.js"
+  },
+  "prisma": {
+    "schema": "src/config/schema.prisma"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
@@ -29,6 +30,7 @@
     "jest": "^28.1.1",
     "nodemon": "^2.0.16",
     "prettier": "^2.6.2",
+    "prisma": "^4.11.0",
     "ts-jest": "^28.0.4",
     "ts-node": "^10.8.1",
     "tsc-alias": "^1.6.6",
@@ -38,16 +40,15 @@
     "@fastify/helmet": "^10.1.0",
     "@fastify/swagger": "^8.3.1",
     "@fastify/swagger-ui": "^1.5.0",
-    "axios": "^0.27.2",
-    "cors": "^2.8.5",
+    "@prisma/client": "^4.11.0",
     "dotenv": "^16.0.0",
     "fastify": "^4.14.0",
+    "fastify-plugin": "^4.5.0",
     "fastify-type-provider-zod": "^1.1.9",
     "npmlog": "^7.0.1",
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.6.0",
-    "typeorm": "^0.3.6",
     "uuid": "^8.3.2",
     "zod": "^3.21.0"
   },
