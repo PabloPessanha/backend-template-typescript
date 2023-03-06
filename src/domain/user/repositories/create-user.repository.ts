@@ -14,16 +14,12 @@ export class CreateUserRepository {
       data: {
         name: user.name,
         age: user.age,
+        address: {
+          create: user.address,
+        },
       },
     });
 
-    const address = await this.db.address.create({
-      data: {
-        ...user.address,
-        userId: createdUser.id,
-      },
-    });
-
-    return { ...createdUser, address };
+    return createdUser;
   }
 }
