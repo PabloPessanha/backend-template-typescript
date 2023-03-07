@@ -6,7 +6,6 @@
 //    - local: run migration with the follow command: `(npx|pnpm|yarn) prisma migrate dev`
 //    - stg/prod: run migration with the follow command: `(npx|pnpm|yarn) prisma migrate deploy`
 
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -17,17 +16,17 @@ datasource db {
 }
 
 model User {
-  id      String @id @default(uuid())
+  id      String   @id @default(uuid())
   name    String?
   age     Int?
   address Address?
 }
 
 model Address {
-  id      Int @id @default(autoincrement())
-  state   String
-  cep     String
-  street  String?
-  user    User? @relation(fields: [userId], references: [id])
-  userId  String? @unique
+  id     Int     @id @default(autoincrement())
+  state  String
+  cep    String
+  street String?
+  user   User?   @relation(fields: [userId], references: [id])
+  userId String? @unique
 }
