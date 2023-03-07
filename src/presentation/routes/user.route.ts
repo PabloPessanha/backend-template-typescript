@@ -1,9 +1,10 @@
 import { FastifyInstance } from 'fastify';
 import { singleton, inject } from 'tsyringe';
 import { BaseRouter } from '@/shared/base/BaseRouter';
+import { ListUserResponse, ListUserSchema } from '@/shared/schemas/user/list-user.schema';
 import { ListUserController } from '@/presentation/controllers/user/list-user.controller';
-import { CreateUserController } from '@/presentation/controllers/user/create-user.controller';
 import { CreateUserBody, CreateUserSchema } from '@/shared/schemas/user/create-user.schema';
+import { CreateUserController } from '@/presentation/controllers/user/create-user.controller';
 
 @singleton()
 export class UserRoute extends BaseRouter {
@@ -18,9 +19,10 @@ export class UserRoute extends BaseRouter {
   }
 
   public async setup(fastify: FastifyInstance) {
-    fastify.route({
+    fastify.route<{ Reply: ListUserResponse[] }>({
       method: 'GET',
       url: '/user',
+      schema: ListUserSchema,
       handler: (_r, reply) => this.listUserHandler.index(reply),
     });
 
