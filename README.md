@@ -14,7 +14,7 @@ Para facilitar o desenvolvimento de aplicações, para essa branch eu utilizei:
 - [pnpm](https://pnpm.io/installation) como gerenciador de pacotes pela sua velocidade e vantagens de segurança;
 - Arquitetura utilizando os principios de Clean Code, SOLID e DDD;
 
-**Sobre a arquitetura**
+#### Sobre a arquitetura
 
 A aplicação está estruturada da seguinte forma:
 
@@ -34,12 +34,13 @@ src/
 test/
 ```
 A divisão das resposabilidade de cada uma das camadas está da seguinte forma:
-- `presentation`: Responsável por conter tudo o que é resposável pelo fluxo de entrada e saída da aplicação, tratativa de erro caso seja necessário e o todas as suas configurações iniciais.
 - `domain`: Responsável por conter toda a lógica e regra de negócio através de seus serviços.
 - `infrastructure`: Responsável por conter e gerenciar comunicações externas, seja com banco de dados, com provedores como APIs externas e microserviços.
-- `shared`: Responsável por conter tudo aquilo que pode ser compartilhado entre outras camadas, como tipagens e configurações de ambiente.
+- `presentation`: Responsável por conter tudo o que é resposável pelo fluxo de entrada e saída da aplicação, tratativa de erro caso seja necessário e o todas as suas configurações iniciais.
+  - `_plugins`: Contém uma serie de funções customizaveis com para ser injetado durante a inicialização da aplicação. [Fastify Plugins](https://www.fastify.io/docs/latest/Reference/Plugins/)
+- `shared`: Responsável por conter tudo aquilo que pode ser compartilhado entre outras camadas, como tipagens, logger e configurações de ambiente.
 
-**Rodando localmente**
+#### Rodando localmente
 
 Para rodar a aplicação, é necessario que o node esteja na versão `v14.18.*`, caso possua [nvm](https://github.com/nvm-sh/nvm), basta rodar o comando `nvm use` e ele deverá setar o ambiente para você.
 
@@ -47,5 +48,6 @@ Também é necessário instalar previamente o pacote [pnpm](https://pnpm.io/inst
 
 Após a versão e os pacotes instalados corretamente, na raiz do projeto, siga os seguintes comandos:
 1. `cp .env.example .env`
-2. `pnpm prisma migrate dev`
-3. `pnpm dev`
+2. `pnpm i`
+3. `pnpm prisma migrate dev`
+4. `pnpm dev`
