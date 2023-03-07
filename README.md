@@ -15,6 +15,7 @@ Para facilitar o desenvolvimento de aplicações, para essa branch eu utilizei:
 - Arquitetura utilizando os principios de Clean Code, SOLID e DDD;
 
 **Sobre a arquitetura**
+
 A aplicação está estruturada da seguinte forma:
 
 ```
@@ -39,6 +40,7 @@ A divisão das resposabilidade de cada uma das camadas está da seguinte forma:
 - `shared`: Responsável por conter tudo aquilo que pode ser compartilhado entre outras camadas, como tipagens e configurações de ambiente.
 
 **Rodando localmente**
+
 Para rodar a aplicação, é necessario que o node esteja na versão `v14.18.*`, caso possua [nvm](https://github.com/nvm-sh/nvm), basta rodar o comando `nvm use` e ele deverá setar o ambiente para você.
 
 Também é necessário instalar previamente o pacote [pnpm](https://pnpm.io/installation) antes de rodar a aplicação para seu melhor uso.
