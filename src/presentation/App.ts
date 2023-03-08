@@ -1,11 +1,8 @@
 import helmet from '@fastify/helmet';
+import { inject, singleton } from 'tsyringe';
 import fastify, { FastifyInstance } from 'fastify';
-import { container, inject, singleton } from 'tsyringe';
-import { serializerCompiler, validatorCompiler } from 'fastify-type-provider-zod';
 import { Config } from '@/shared/Config';
 import { Logger } from '@/shared/loggers/Logger';
-import { BaseRouter } from '@/shared/base/BaseRouter';
-import * as Routes from '@/presentation/routes';
 import * as Plugins from '@/presentation/_plugins';
 
 @singleton()
@@ -20,35 +17,18 @@ export class Application {
     private config: Config,
   ) {
     this.fastify = fastify()
-      .setSerializerCompiler(serializerCompiler)
-      .setValidatorCompiler(validatorCompiler)
-      .register(helmet, { global: true })
-      .register(Plugins.swagger)
-      .register(Plugins.prisma);
+      .register(helmet, {
+        global: true,
+        contentSecurityPolicy: Config.isProd() ? undefined : false,
+      })
+      .register(Plugins.prisma)
+      .register(Plugins.mercurius);
   }
 
-  private setupRoutes() {
-    const routes = Object.values(Routes);
-
-    for (const route of routes) {
-      const instance = container.resolve<BaseRouter>(route);
-      this.fastify.register((f) => instance.setup(f), { prefix: '/v1' });
-    }
-  }
-
-  private async setupServer() {
+  public async initialize() {
     const { colors } = this.logger;
-    await this.fastify.listen({
-      port: this.config.port,
-    });
-    this.logger.info(`Server is running on: ${colors.yellow}http://localhost:${this.config.port}`);
-    this.logger.info(`Docs is running on: ${colors.yellow}http://localhost:${this.config.port}/v1/docs`);
+    await this.fastify.listen({ port: this.config.port });
 
-    await this.fastify.ready();
-  }
-
-  public initialize() {
-    this.setupRoutes();
-    this.setupServer();
+    this.logger.info(`Server is running on: ${colors.yellow}http://localhost:${this.config.port}/graphiql`);
   }
 }
