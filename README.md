@@ -103,3 +103,4 @@ Nessa seção estarei deixado opções para serem implementadas futuramente para
 
 - Para realizar validações, é importante incluir **class-decorators**, veja mais em [validações com typegraphql](https://typegraphql.com/docs/validation.html)
 - Verificar a versão de lançamento da ferramenta [typegraphql](https://www.npmjs.com/package/type-graphql), atualmente está sendo usado a versão beta, atualizar para versão stable quando houver compativel com fastify v4
+- Adicionar testes usando o seguinte exemplo: [Video de demonstração](https://www.youtube.com/watch?v=zR8jKR9hnFA)
