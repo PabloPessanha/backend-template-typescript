@@ -75,7 +75,7 @@ query {
 
 ```graphql
 mutation {
-	createUser(input: {
+  createUser(input: {
     name: "Jeffs"
     age: 32
     address: {
