@@ -2,7 +2,9 @@
 
 Esse repositório nasceu com o intuíto de facilitar o pontapé inicial dos meus projetos sem que tenha necessidade de sempre reconfigurar todas as ferramentas manualmente.
 
-Ele possuí uma arquitura baseada no conceito hexagonal para alta escalabilidade e tem uma demonstração de código simplificado para seguir os mesmos conceitos e estrutura.
+Ele possuí uma arquitetura baseada no conceito hexagonal para alta escalabilidade e tem uma demonstração de código simplificado para seguir os mesmos conceitos e estrutura.
+
+Nesse mesmo repositório também possui uma outra branch com a mesma arquitetura, porém adaptada pra o uso com GraphQL, ele pode ser acessado por [esse link](https://github.com/ppessanhadev/backend-template-typescript/tree/graphql) ou alterando a branch para `graphql`.
 
 #### Overview
 
@@ -51,3 +53,9 @@ Após a versão e os pacotes instalados corretamente, na raiz do projeto, siga o
 2. `pnpm i`
 3. `pnpm prisma migrate dev`
 4. `pnpm dev`
+
+#### Futuras melhorias
+
+- Implementação de scripts para lint em precommit;
+- Implementação de testes de exemplo e script para roda-los e garantir que todos estão passando em prepush;
+- Adicionar jobs pelo Github Actions, para ter uma base de CI/CD;
